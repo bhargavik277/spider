@@ -1,6 +1,11 @@
-/* =========================================================
+/* =====================================================
+   AKASHGANGA JAVASCRIPT
+===================================================== */
+
+
+/* =====================================================
    LOGIN
-========================================================= */
+===================================================== */
 
 const loginPage =
     document.getElementById("loginPage");
@@ -11,222 +16,353 @@ const mainWebsite =
 const loginForm =
     document.getElementById("loginForm");
 
-const loginButton =
-    document.getElementById("loginButton");
+
+loginForm.addEventListener(
+    "submit",
+    function(event) {
+
+        event.preventDefault();
+
+        const email =
+            document.getElementById("email").value.trim();
+
+        const password =
+            document.getElementById("password").value.trim();
 
 
-function openWebsite() {
+        if (!email || !password) {
+
+            showToast(
+                "Please enter email and password."
+            );
+
+            return;
+        }
+
+
+        enterUniverse();
+
+    }
+);
+
+
+
+function enterUniverse() {
+
+    const email =
+        document.getElementById("email").value.trim();
+
+    const password =
+        document.getElementById("password").value.trim();
+
+
+    if (!email || !password) {
+
+        showToast(
+            "Please enter email and password."
+        );
+
+        return;
+    }
+
 
     loginPage.classList.add("hidden");
 
     mainWebsite.classList.remove("hidden");
 
+
+    showSection("home");
+
+
     window.scrollTo({
         top: 0,
-        behavior: "smooth"
+        behavior: "instant"
     });
+
+
+    showToast(
+        "Welcome to AKASHGANGA."
+    );
 }
 
 
-loginForm.addEventListener("submit", function(event) {
 
-    event.preventDefault();
+/* =====================================================
+   NAVIGATION
+===================================================== */
 
-    const email =
-        document.getElementById("loginEmail").value.trim();
+const menuButton =
+    document.getElementById("menuButton");
 
-    const password =
-        document.getElementById("loginPassword").value.trim();
+const sideMenu =
+    document.getElementById("sideMenu");
+
+const closeMenu =
+    document.getElementById("closeMenu");
 
 
-    if (!email || !password) {
+menuButton.addEventListener(
+    "click",
+    function() {
 
-        alert("Please enter your email and password.");
+        sideMenu.classList.add("open");
 
-        return;
+    }
+);
+
+
+closeMenu.addEventListener(
+    "click",
+    function() {
+
+        sideMenu.classList.remove("open");
+
+    }
+);
+
+
+function showSection(sectionName) {
+
+    const sections =
+        document.querySelectorAll(".page-section");
+
+
+    sections.forEach(
+        section => {
+
+            section.classList.remove(
+                "active-section"
+            );
+
+        }
+    );
+
+
+    const selected =
+        document.getElementById(sectionName);
+
+
+    if (selected) {
+
+        selected.classList.add(
+            "active-section"
+        );
+
     }
 
 
-    openWebsite();
-
-});
+    sideMenu.classList.remove("open");
 
 
-loginButton.addEventListener("click", function() {
+    window.scrollTo({
 
-    const email =
-        document.getElementById("loginEmail").value.trim();
+        top: 0,
 
-    const password =
-        document.getElementById("loginPassword").value.trim();
-
-
-    if (!email || !password) {
-
-        alert("Please enter your email and password.");
-
-        return;
-    }
-
-
-    openWebsite();
-
-});
-
-
-
-/* =========================================================
-   HAMBURGER NAVIGATION
-========================================================= */
-
-const hamburger =
-    document.getElementById("hamburger");
-
-const sidebar =
-    document.getElementById("sidebar");
-
-
-hamburger.addEventListener("click", function() {
-
-    hamburger.classList.toggle("active");
-
-    sidebar.classList.toggle("open");
-
-});
-
-
-document
-    .querySelectorAll(".sidebar a")
-    .forEach(function(link) {
-
-        link.addEventListener("click", function() {
-
-            hamburger.classList.remove("active");
-
-            sidebar.classList.remove("open");
-
-        });
+        behavior: "smooth"
 
     });
 
+}
 
 
-/* =========================================================
-   EXOPLANET DATA
-========================================================= */
 
-const planets = [
+/* =====================================================
+   PLANET DATA
+===================================================== */
+
+const planetData = [
 
     {
         name: "KEPLER-22B",
         distance: "600 light years",
         star: "Kepler-22",
-        mars: "No",
         orbit: "290 days",
-        potential: "Habitable Zone"
+        potential: "Potentially habitable"
     },
 
     {
         name: "KEPLER-452B",
         distance: "1,402 light years",
         star: "Kepler-452",
-        mars: "No",
         orbit: "385 days",
-        potential: "Possible"
+        potential: "Possible habitable zone"
     },
 
     {
         name: "TRAPPIST-1E",
         distance: "40 light years",
         star: "TRAPPIST-1",
-        mars: "No",
         orbit: "6.1 days",
-        potential: "High"
+        potential: "Potentially habitable"
     },
 
     {
-        name: "TRAPPIST-1F",
-        distance: "40 light years",
-        star: "TRAPPIST-1",
-        mars: "No",
-        orbit: "9.2 days",
-        potential: "Possible"
+        name: "KEPLER-16B",
+        distance: "245 light years",
+        star: "Kepler-16",
+        orbit: "229 days",
+        potential: "Gas giant"
     },
 
     {
-        name: "TRAPPIST-1G",
-        distance: "40 light years",
-        star: "TRAPPIST-1",
-        mars: "No",
-        orbit: "12.4 days",
-        potential: "Possible"
+        name: "KEPLER-186F",
+        distance: "500 light years",
+        star: "Kepler-186",
+        orbit: "130 days",
+        potential: "Earth-sized candidate"
     },
 
     {
-        name: "PROXIMA B",
+        name: "PROXIMA CENTAURI B",
         distance: "4.24 light years",
         star: "Proxima Centauri",
-        mars: "No",
         orbit: "11.2 days",
-        potential: "Possible"
+        potential: "Potentially habitable"
     },
 
     {
         name: "TOI-700D",
         distance: "101.4 light years",
         star: "TOI-700",
-        mars: "No",
         orbit: "37.4 days",
-        potential: "Habitable Zone"
+        potential: "Potentially habitable"
     },
 
     {
-        name: "K2-18B",
-        distance: "124 light years",
-        star: "K2-18",
-        mars: "No",
-        orbit: "33 days",
-        potential: "Interesting"
+        name: "55 CANCRI E",
+        distance: "41 light years",
+        star: "55 Cancri",
+        orbit: "0.7 days",
+        potential: "Rocky super-Earth"
     },
 
     {
-        name: "LHS 1140B",
-        distance: "48 light years",
-        star: "LHS 1140",
-        mars: "No",
-        orbit: "24.7 days",
-        potential: "Habitable Zone"
+        name: "WASP-12B",
+        distance: "1,410 light years",
+        star: "WASP-12",
+        orbit: "1.1 days",
+        potential: "Hot gas giant"
     },
 
     {
-        name: "GLIESE 667CC",
-        distance: "23.6 light years",
-        star: "Gliese 667C",
-        mars: "No",
-        orbit: "28 days",
-        potential: "Possible"
+        name: "HD 209458 B",
+        distance: "159 light years",
+        star: "HD 209458",
+        orbit: "3.5 days",
+        potential: "Hot gas giant"
     }
 
 ];
 
 
-let currentPlanet = 0;
+
+/* =====================================================
+   CREATE 10 PLANET CARDS
+===================================================== */
+
+const planetCarousel =
+    document.getElementById(
+        "planetCarousel"
+    );
 
 
-/* =========================================================
-   CREATE PLANET CARDS
-========================================================= */
+const planetStyles = [
 
-const planetTrack =
-    document.getElementById("planetTrack");
+    `
+    radial-gradient(
+        circle at 30% 30%,
+        #ffe8b0,
+        #c46b42 45%,
+        #402018 80%
+    )
+    `,
+
+    `
+    radial-gradient(
+        circle at 35% 30%,
+        #aee7ff,
+        #4873cf 45%,
+        #111b5c 80%
+    )
+    `,
+
+    `
+    radial-gradient(
+        circle at 35% 30%,
+        #ffb1b1,
+        #c72c5c 45%,
+        #41122a 80%
+    )
+    `,
+
+    `
+    radial-gradient(
+        circle at 30% 30%,
+        #d8c4ff,
+        #6747b8 45%,
+        #201744 80%
+    )
+    `,
+
+    `
+    radial-gradient(
+        circle at 30% 30%,
+        #c8ffd8,
+        #359b71 45%,
+        #123b32 80%
+    )
+    `,
+
+    `
+    radial-gradient(
+        circle at 30% 30%,
+        #fff0bd,
+        #b87c2e 45%,
+        #40230c 80%
+    )
+    `,
+
+    `
+    radial-gradient(
+        circle at 30% 30%,
+        #d7c2ff,
+        #8146b8 45%,
+        #29133f 80%
+    )
+    `,
+
+    `
+    radial-gradient(
+        circle at 30% 30%,
+        #9eefff,
+        #1c79ae 45%,
+        #082943 80%
+    )
+    `,
+
+    `
+    radial-gradient(
+        circle at 30% 30%,
+        #ffd5c0,
+        #c54d2e 45%,
+        #421b13 80%
+    )
+    `,
+
+    `
+    radial-gradient(
+        circle at 30% 30%,
+        #d1e3ff,
+        #4564a5 45%,
+        #111d42 80%
+    )
+    `
+
+];
 
 
-function createPlanetCards() {
-
-    planetTrack.innerHTML = "";
-
-
-    planets.forEach(function(planet, index) {
+planetData.forEach(
+    (planet, index) => {
 
         const card =
             document.createElement("div");
@@ -235,355 +371,382 @@ function createPlanetCards() {
             "planet-card";
 
 
-        if (index === 0) {
-            card.classList.add("active");
-        }
-
-
         card.innerHTML = `
 
-            <div class="planet-visual">
-
-                <div class="planet-sphere"></div>
-
+            <div
+                class="planet-visual"
+                style="
+                    background:
+                    ${planetStyles[index]};
+                ">
             </div>
 
+            <h3>
+                ${planet.name}
+            </h3>
 
-            <div class="planet-info-card">
+            <p>
+                ${planet.distance}
+            </p>
 
-                <h3>
-                    ${planet.name}
-                </h3>
+            <button
+                class="view-btn"
+                onclick="openPlanet(${index})">
 
-                <p>
-                    ${planet.distance}
-                </p>
+                VIEW PLANET
 
-                <p>
-                    Star: ${planet.star}
-                </p>
-
-
-                <div class="planet-actions">
-
-                    <button
-                        class="view-button"
-                        onclick="openPlanet(${index})">
-
-                        VIEW PLANET
-
-                    </button>
-
-
-                    <button
-                        class="info-button"
-                        onclick="openPlanet(${index})">
-
-                        i
-
-                    </button>
-
-                </div>
-
-            </div>
+            </button>
 
         `;
 
 
-        planetTrack.appendChild(card);
+        planetCarousel.appendChild(card);
 
-    });
-
-}
-
-
-createPlanetCards();
+    }
+);
 
 
 
-/* =========================================================
-   SHOW PLANET
-========================================================= */
+/* =====================================================
+   CAROUSEL
+===================================================== */
 
-function showPlanet(index) {
-
-    const cards =
-        document.querySelectorAll(".planet-card");
-
-
-    cards.forEach(function(card) {
-
-        card.classList.remove("active");
-
-    });
+const planetPrev =
+    document.getElementById(
+        "planetPrev"
+    );
 
 
-    cards[index].classList.add("active");
-
-}
-
-
-/* =========================================================
-   NEXT PLANET
-========================================================= */
-
-document
-    .getElementById("nextPlanet")
-    .addEventListener("click", function() {
-
-        currentPlanet++;
-
-        if (currentPlanet >= planets.length) {
-
-            currentPlanet = 0;
-
-        }
-
-        showPlanet(currentPlanet);
-
-    });
+const planetNext =
+    document.getElementById(
+        "planetNext"
+    );
 
 
+planetPrev.addEventListener(
+    "click",
+    function() {
 
-/* =========================================================
-   PREVIOUS PLANET
-========================================================= */
+        planetCarousel.scrollBy({
 
-document
-    .getElementById("prevPlanet")
-    .addEventListener("click", function() {
+            left: -500,
 
-        currentPlanet--;
+            behavior: "smooth"
 
-        if (currentPlanet < 0) {
+        });
 
-            currentPlanet = planets.length - 1;
+    }
+);
 
-        }
 
-        showPlanet(currentPlanet);
+planetNext.addEventListener(
+    "click",
+    function() {
 
-    });
+        planetCarousel.scrollBy({
+
+            left: 500,
+
+            behavior: "smooth"
+
+        });
+
+    }
+);
 
 
 
-/* =========================================================
+/* =====================================================
    PLANET MODAL
-========================================================= */
+===================================================== */
 
 const planetModal =
-    document.getElementById("planetModal");
+    document.getElementById(
+        "planetModal"
+    );
 
 
-const closeModal =
-    document.getElementById("closeModal");
+const selectedPlanet =
+    document.getElementById(
+        "selectedPlanet"
+    );
 
 
-let selectedPlanet = null;
+let currentPlanet = 0;
+
 
 
 function openPlanet(index) {
 
-    selectedPlanet =
-        planets[index];
+    currentPlanet = index;
 
 
-    document.getElementById("planetName")
-        .textContent =
-        selectedPlanet.name;
+    const planet =
+        planetData[index];
 
 
-    document.getElementById("planetDistance")
-        .textContent =
-        selectedPlanet.distance;
+    document.getElementById(
+        "planetName"
+    ).textContent =
+        planet.name;
 
 
-    document.getElementById("planetStar")
-        .textContent =
-        selectedPlanet.star;
+    document.getElementById(
+        "planetDistance"
+    ).textContent =
+        planet.distance;
 
 
-    document.getElementById("planetMars")
-        .textContent =
-        selectedPlanet.mars;
+    document.getElementById(
+        "planetStar"
+    ).textContent =
+        planet.star;
 
 
-    document.getElementById("planetOrbit")
-        .textContent =
-        selectedPlanet.orbit;
+    document.getElementById(
+        "planetOrbit"
+    ).textContent =
+        planet.orbit;
 
 
-    document.getElementById("planetPotential")
-        .textContent =
-        selectedPlanet.potential;
+    document.getElementById(
+        "planetPotential"
+    ).textContent =
+        planet.potential;
 
 
-    planetModal.classList.add("show");
+    selectedPlanet.style.background =
+        planetStyles[index];
+
+
+    planetModal.classList.add(
+        "active"
+    );
+
+
+    document.body.style.overflow =
+        "hidden";
 
 }
 
 
-closeModal.addEventListener("click", function() {
 
-    planetModal.classList.remove("show");
+function closePlanet() {
 
-});
-
-
-planetModal.addEventListener("click", function(event) {
-
-    if (event.target === planetModal) {
-
-        planetModal.classList.remove("show");
-
-    }
-
-});
-
-
-/* ESC closes modal */
-
-document.addEventListener("keydown", function(event) {
-
-    if (event.key === "Escape") {
-
-        planetModal.classList.remove("show");
-
-    }
-
-});
-
-
-
-/* =========================================================
-   DOWNLOAD PLANET INFORMATION
-========================================================= */
-
-document
-    .getElementById("downloadPlanet")
-    .addEventListener("click", function() {
-
-        if (!selectedPlanet) {
-            return;
-        }
-
-
-        const text =
-
-`AKASHGANGA — EXOPLANET INFORMATION
-
-Planet: ${selectedPlanet.name}
-
-Distance:
-${selectedPlanet.distance}
-
-Star:
-${selectedPlanet.star}
-
-Mars:
-${selectedPlanet.mars}
-
-Orbit:
-${selectedPlanet.orbit}
-
-Potential Orbit:
-${selectedPlanet.potential}
-`;
-
-
-        const blob =
-            new Blob(
-                [text],
-                {
-                    type: "text/plain"
-                }
-            );
-
-
-        const url =
-            URL.createObjectURL(blob);
-
-
-        const link =
-            document.createElement("a");
-
-
-        link.href = url;
-
-        link.download =
-            `${selectedPlanet.name}.txt`;
-
-
-        document.body.appendChild(link);
-
-        link.click();
-
-        link.remove();
-
-
-        URL.revokeObjectURL(url);
-
-    });
-
-
-
-/* =========================================================
-   EMAIL NEWSLETTER
-========================================================= */
-
-const emailForm =
-    document.getElementById("emailForm");
-
-
-emailForm.addEventListener("submit", function(event) {
-
-    event.preventDefault();
-
-
-    const email =
-        document.getElementById("emailInput")
-        .value
-        .trim();
-
-
-    if (!email) {
-
-        alert("Please enter your email address.");
-
-        return;
-    }
-
-
-    alert(
-        "Thank you! You are now connected with AKASHGANGA."
+    planetModal.classList.remove(
+        "active"
     );
 
 
-    emailForm.reset();
+    document.body.style.overflow =
+        "";
+}
 
-});
+
+
+planetModal.addEventListener(
+    "click",
+    function(event) {
+
+        if (
+            event.target ===
+            planetModal
+        ) {
+
+            closePlanet();
+
+        }
+
+    }
+);
+
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            closePlanet();
+
+        }
+
+    }
+);
 
 
 
-/* =========================================================
-   MOUSE WEB EFFECT
-========================================================= */
+/* =====================================================
+   DOWNLOAD PLANET INFORMATION
+===================================================== */
+
+function downloadPlanetInfo() {
+
+    const planet =
+        planetData[currentPlanet];
+
+
+    const text =
+
+`AKASHGANGA
+EXOPLANET DATABASE
+==============================
+
+PLANET
+${planet.name}
+
+DISTANCE
+${planet.distance}
+
+STAR
+${planet.star}
+
+ORBIT
+${planet.orbit}
+
+POTENTIAL
+${planet.potential}
+
+==============================
+Generated by AKASHGANGA
+`;
+
+
+    const blob =
+        new Blob(
+            [text],
+            {
+                type:
+                    "text/plain"
+            }
+        );
+
+
+    const url =
+        URL.createObjectURL(blob);
+
+
+    const link =
+        document.createElement("a");
+
+
+    link.href = url;
+
+
+    link.download =
+        planet.name
+            .replaceAll(" ", "_")
+            + ".txt";
+
+
+    document.body.appendChild(
+        link
+    );
+
+
+    link.click();
+
+
+    link.remove();
+
+
+    URL.revokeObjectURL(url);
+
+
+    showToast(
+        "Planet information downloaded."
+    );
+
+}
+
+
+
+/* =====================================================
+   NEWSLETTER
+===================================================== */
+
+const newsletterForm =
+    document.getElementById(
+        "newsletterForm"
+    );
+
+
+newsletterForm.addEventListener(
+    "submit",
+    function(event) {
+
+        event.preventDefault();
+
+
+        showToast(
+            "You're connected to the cosmos."
+        );
+
+
+        newsletterForm.reset();
+
+    }
+);
+
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+function showToast(message) {
+
+    const toast =
+        document.getElementById(
+            "toast"
+        );
+
+
+    toast.textContent =
+        message;
+
+
+    toast.classList.add(
+        "show"
+    );
+
+
+    setTimeout(
+        function() {
+
+            toast.classList.remove(
+                "show"
+            );
+
+        },
+        2500
+    );
+
+}
+
+
+
+/* =====================================================
+   WEB CURSOR
+===================================================== */
 
 const canvas =
-    document.getElementById("webCanvas");
+    document.getElementById(
+        "webCanvas"
+    );
 
 
 const ctx =
     canvas.getContext("2d");
 
 
-let mouse = {
-    x: 0,
-    y: 0
-};
+let mouseX = 0;
+let mouseY = 0;
 
-
-let points = [];
+let targetX = 0;
+let targetY = 0;
 
 
 function resizeCanvas() {
@@ -610,71 +773,27 @@ window.addEventListener(
     "mousemove",
     function(event) {
 
-        mouse.x =
+        targetX =
             event.clientX;
 
-        mouse.y =
+        targetY =
             event.clientY;
 
-
-        points.push({
-
-            x: mouse.x,
-
-            y: mouse.y,
-
-            life: 1
-
-        });
-
-
-        if (points.length > 35) {
-
-            points.shift();
-
-        }
-
     }
 );
 
 
 
-/* =========================================================
-   CLICK WEB SPARK
-========================================================= */
-
-window.addEventListener(
-    "click",
-    function(event) {
-
-        for (let i = 0; i < 12; i++) {
-
-            points.push({
-
-                x:
-                    event.clientX +
-                    (Math.random() - .5) * 80,
-
-                y:
-                    event.clientY +
-                    (Math.random() - .5) * 80,
-
-                life: 1.5
-
-            });
-
-        }
-
-    }
-);
-
-
-
-/* =========================================================
-   DRAW WEB
-========================================================= */
+/* WEB STRUCTURE */
 
 function drawWeb() {
+
+    mouseX +=
+        (targetX - mouseX) * .25;
+
+    mouseY +=
+        (targetY - mouseY) * .25;
+
 
     ctx.clearRect(
         0,
@@ -684,50 +803,92 @@ function drawWeb() {
     );
 
 
-    if (points.length > 1) {
+    const radius = 70;
+
+    const lines = 10;
+
+
+    ctx.save();
+
+
+    ctx.strokeStyle =
+        "rgba(255,255,255,.28)";
+
+    ctx.lineWidth = .7;
+
+
+    /*
+       Radial web lines
+    */
+
+    for (
+        let i = 0;
+        i < lines;
+        i++
+    ) {
+
+        const angle =
+            (Math.PI * 2 / lines) * i;
+
+
+        const x =
+            mouseX +
+            Math.cos(angle) * radius;
+
+
+        const y =
+            mouseY +
+            Math.sin(angle) * radius;
+
 
         ctx.beginPath();
 
         ctx.moveTo(
-            points[0].x,
-            points[0].y
+            mouseX,
+            mouseY
         );
 
-
-        for (let i = 1; i < points.length; i++) {
-
-            ctx.lineTo(
-                points[i].x,
-                points[i].y
-            );
-
-        }
-
-
-        ctx.strokeStyle =
-            "rgba(255,255,255,.45)";
-
-        ctx.lineWidth = 1;
+        ctx.lineTo(
+            x,
+            y
+        );
 
         ctx.stroke();
 
     }
 
 
-    points.forEach(function(point) {
+    /*
+       Circular web rings
+    */
 
-        point.life -= .025;
+    for (
+        let r = 15;
+        r <= radius;
+        r += 14
+    ) {
 
-    });
+        ctx.beginPath();
 
-
-    points =
-        points.filter(
-            point => point.life > 0
+        ctx.arc(
+            mouseX,
+            mouseY,
+            r,
+            0,
+            Math.PI * 2
         );
 
+        ctx.stroke();
 
-    requestAnimationFrame(drawWeb);
+    }
+
+
+    ctx.restore();
+
+
+    requestAnimationFrame(
+        drawWeb
+    );
 
 }
 
@@ -736,39 +897,135 @@ drawWeb();
 
 
 
-/* =========================================================
-   SECTION REVEAL ANIMATION
-========================================================= */
+/* =====================================================
+   CLICK SPARK / WEB
+===================================================== */
 
-const sections =
-    document.querySelectorAll(".section");
+let sparks = [];
 
 
-const observer =
-    new IntersectionObserver(
-        function(entries) {
+window.addEventListener(
+    "click",
+    function(event) {
 
-            entries.forEach(function(entry) {
+        for (
+            let i = 0;
+            i < 20;
+            i++
+        ) {
 
-                if (entry.isIntersecting) {
+            const angle =
+                Math.random() *
+                Math.PI * 2;
 
-                    entry.target.classList.add(
-                        "visible"
-                    );
 
-                }
+            const speed =
+                Math.random() * 4 + 2;
+
+
+            sparks.push({
+
+                x:
+                    event.clientX,
+
+                y:
+                    event.clientY,
+
+                vx:
+                    Math.cos(angle) * speed,
+
+                vy:
+                    Math.sin(angle) * speed,
+
+                life: 1
 
             });
 
-        },
-        {
-            threshold: .15
         }
+
+    }
+);
+
+
+
+function animateSparks() {
+
+    for (
+        let i = sparks.length - 1;
+        i >= 0;
+        i--
+    ) {
+
+        const spark =
+            sparks[i];
+
+
+        spark.x +=
+            spark.vx;
+
+        spark.y +=
+            spark.vy;
+
+
+        spark.life -=
+            .025;
+
+
+        ctx.beginPath();
+
+
+        ctx.arc(
+            spark.x,
+            spark.y,
+            1.5,
+            0,
+            Math.PI * 2
+        );
+
+
+        ctx.fillStyle =
+            `rgba(255,255,255,${spark.life})`;
+
+
+        ctx.fill();
+
+
+        if (
+            spark.life <= 0
+        ) {
+
+            sparks.splice(i, 1);
+
+        }
+
+    }
+
+
+    requestAnimationFrame(
+        animateSparks
     );
 
+}
 
-sections.forEach(function(section) {
 
-    observer.observe(section);
+animateSparks();
 
-});
+
+
+/* =====================================================
+   START HOME AFTER LOGIN
+===================================================== */
+
+window.addEventListener(
+    "load",
+    function() {
+
+        /*
+           Login remains first.
+           Nothing else is opened automatically.
+        */
+
+        showSection("home");
+
+    }
+);
