@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Akashganga | Spider-Verse</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+    <!-- =====================================================
+         CURSOR WEB
+    ====================================================== -->
+
+    <canvas id="webCanvas"></canvas>
+
+
+    <!-- =====================================================
+         LOGIN PAGE
+    ====================================================== -->
+
+    <section id="loginPage" class="login-page">
+
+        <!-- LEFT LOGIN SECTION -->
+
+        <div class="login-left">
+
+            <div class="portal-title">
+                SPIDER-VERSE
+                <br>
+                <span>SECURE PORTAL</span>
+            </div>
+
+            <h2 class="signin-title">
+                SIGN IN
+            </h2>
+
+            <form id="loginForm" class="login-form">
+
+                <input
+                    type="email"
+                    id="loginEmail"
+                    placeholder="EMAIL ADDRESS"
+                    required
+                >
+
+                <input
+                    type="password"
+                    id="loginPassword"
+                    placeholder="PASSWORD"
+                    required
+                >
+
+                <button
+                    type="submit"
+                    class="glow-button">
+
+                    SUBMIT
+
+                </button>
+
+                <button
+                    type="button"
+                    id="loginButton"
+                    class="glow-button">
+
+                    SIGN IN
+
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- RIGHT SPIDER-MAN SECTION -->
+
+        <div class="login-right">
+
+            <img
+                src="spiderman.png"
+                alt="Spider-Man"
+                class="spiderman login-spiderman"
+            >
+
+            <div class="akash-small">
+                AKASHGANGA
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         MAIN WEBSITE
+    ====================================================== -->
+
+    <div id="mainWebsite" class="hidden">
+
+
+        <!-- =================================================
+             HAMBURGER
+        ================================================== -->
+
+        <button
+            class="hamburger"
+            id="hamburger"
+            aria-label="Open navigation">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+
+        <!-- =================================================
+             SIDEBAR
+        ================================================== -->
+
+        <aside
+            class="sidebar"
+            id="sidebar">
+
+            <div class="side-logo">
+                SPIDER
+                <br>
+                <span>VERSE</span>
+            </div>
+
+            <nav>
+
+                <a href="#home">
+                    HOME
+                </a>
+
+                <a href="#exoplanet">
+                    EXOPLANET
+                </a>
+
+                <a href="#exploration">
+                    EXPLORATION
+                </a>
+
+                <a href="#facts">
+                    FACTS
+                </a>
+
+            </nav>
+
+            <div class="side-status">
+
+                <div>
+                    🕷 SPIDER-SENSE: ENGAGED
+                </div>
+
+                <div>
+                    ⚡ THWIP: ON
+                </div>
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- =================================================
+             HOME
+        ================================================== -->
+
+        <section
+            id="home"
+            class="section home">
+
+            <div class="home-content">
+
+                <div class="home-left">
+
+                    <h1 class="main-title">
+                        AKASHGANGA
+                    </h1>
+
+                    <div class="tagline">
+                        CONNECTING THE DOTS OF THE UNIVERSE
+                    </div>
+
+                    <p class="description">
+                        A platform that offers a unique journey
+                        through the mysteries of the universe,
+                        connecting planets, stars and stories
+                        beyond our world.
+                    </p>
+
+                    <button
+                        class="glow-button"
+                        onclick="document.getElementById('exoplanet').scrollIntoView()">
+
+                        DOWNLOAD APP
+
+                    </button>
+
+                </div>
+
+
+                <!-- SATELLITE -->
+
+                <div class="satellite-area">
+
+                    <div class="satellite">
+
+                        <div class="satellite-panel left-panel"></div>
+
+                        <div class="satellite-body"></div>
+
+                        <div class="satellite-panel right-panel"></div>
+
+                        <div class="satellite-antenna"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SPIDER-MAN -->
+
+            <img
+                src="spiderman.png"
+                alt="Spider-Man"
+                class="spiderman home-spiderman"
+            >
+
+        </section>
+
+
+
+        <!-- =================================================
+             EXOPLANET
+        ================================================== -->
+
+        <section
+            id="exoplanet"
+            class="section exoplanet">
+
+            <h2 class="section-title">
+                EXOPLANET
+            </h2>
+
+            <p class="section-description">
+
+                Discover the hidden worlds beyond our solar
+                system, where every exploration tells a story.
+
+            </p>
+
+
+            <!-- SPIDER-MAN -->
+
+            <div class="white-spiderman">
+
+                <img
+                    src="spiderman.png"
+                    alt="Spider-Man"
+                    class="spiderman exoplanet-spiderman"
+                >
+
+            </div>
+
+
+            <!-- PLANET CAROUSEL -->
+
+            <div class="planet-carousel">
+
+                <button
+                    class="carousel-arrow"
+                    id="prevPlanet">
+
+                    ‹
+
+                </button>
+
+
+                <div
+                    class="planet-track"
+                    id="planetTrack">
+
+                </div>
+
+
+                <button
+                    class="carousel-arrow"
+                    id="nextPlanet">
+
+                    ›
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             PLANET DETAIL MODAL
+        ================================================== -->
+
+        <div
+            class="planet-modal"
+            id="planetModal">
+
+            <button
+                class="close-modal"
+                id="closeModal">
+
+                ×
+
+            </button>
+
+
+            <div class="planet-detail">
+
+                <div
+                    class="planet-3d"
+                    id="planet3D">
+
+                </div>
+
+
+                <div class="planet-info">
+
+                    <h2 id="planetName">
+                        PLANET
+                    </h2>
+
+                    <ul>
+
+                        <li>
+                            <strong>
+                                Distance:
+                            </strong>
+
+                            <span id="planetDistance">
+                            </span>
+                        </li>
+
+
+                        <li>
+                            <strong>
+                                Star:
+                            </strong>
+
+                            <span id="planetStar">
+                            </span>
+                        </li>
+
+
+                        <li>
+                            <strong>
+                                Mars:
+                            </strong>
+
+                            <span id="planetMars">
+                            </span>
+                        </li>
+
+
+                        <li>
+                            <strong>
+                                Orbit:
+                            </strong>
+
+                            <span id="planetOrbit">
+                            </span>
+                        </li>
+
+
+                        <li>
+                            <strong>
+                                Potential Orbit:
+                            </strong>
+
+                            <span id="planetPotential">
+                            </span>
+                        </li>
+
+                    </ul>
+
+
+                    <button
+                        class="glow-button"
+                        id="downloadPlanet">
+
+                        DOWNLOAD
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             EXPLORATION
+        ================================================== -->
+
+        <section
+            id="exploration"
+            class="section exploration">
+
+
+            <!-- SATURN -->
+
+            <div class="saturn">
+
+                <div class="saturn-ring"></div>
+
+                <div class="saturn-body"></div>
+
+            </div>
+
+
+            <!-- LARGE PLANET -->
+
+            <div class="large-planet">
+
+                <div class="crater crater1"></div>
+                <div class="crater crater2"></div>
+                <div class="crater crater3"></div>
+                <div class="crater crater4"></div>
+
+            </div>
+
+
+            <div class="explore-header">
+
+                <h2 class="explore-title">
+                    EXPLORE
+                </h2>
+
+                <h3 class="explore-subtitle">
+                    EXOPLANET
+                </h3>
+
+            </div>
+
+
+            <!-- STATISTICS -->
+
+            <div class="stats">
+
+                <div class="stat-box">
+
+                    <span>
+                        VISIBLE
+                    </span>
+
+                    <strong>
+                        1500
+                    </strong>
+
+                </div>
+
+
+                <div class="stat-box">
+
+                    <span>
+                        DISTANCE
+                    </span>
+
+                    <strong>
+                        EV
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- TRIVIA -->
+
+            <div class="trivia-section">
+
+                <h2>
+
+                    <span>
+                        EXPLORE
+                    </span>
+
+                    <strong>
+                        TRIVIA
+                    </strong>
+
+                </h2>
+
+
+                <!-- SPIDER-MAN -->
+
+                <div class="masked-spiderman">
+
+                    <img
+                        src="spiderman.png"
+                        alt="Spider-Man"
+                        class="spiderman trivia-spiderman"
+                    >
+
+                </div>
+
+
+                <!-- CARDS -->
+
+                <div class="trivia-cards">
+
+
+                    <div class="trivia-card">
+
+                        <div class="astronaut">
+                            👨‍🚀
+                        </div>
+
+                        <p>
+                            Explore fascinating facts about
+                            space and the universe.
+                        </p>
+
+                    </div>
+
+
+                    <div class="trivia-card">
+
+                        <div class="astronaut">
+                            👨‍🚀
+                        </div>
+
+                        <p>
+                            Discover interesting stories
+                            hidden beyond our planet.
+                        </p>
+
+                    </div>
+
+
+                    <div class="trivia-card">
+
+                        <div class="astronaut">
+                            👨‍🚀
+                        </div>
+
+                        <p>
+                            Learn something new about
+                            the world beyond Earth.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             FACTS
+        ================================================== -->
+
+        <section
+            id="facts"
+            class="section facts">
+
+            <div class="facts-box">
+
+                <h2 class="facts-title">
+                    GET OUR
+                </h2>
+
+                <h3 class="latest-news">
+                    LATEST NEWS
+                </h3>
+
+
+                <form
+                    class="email-box"
+                    id="emailForm">
+
+                    <input
+                        type="email"
+                        placeholder="ENTER EMAIL ADDRESS"
+                        id="emailInput"
+                        required
+                    >
+
+                    <button
+                        type="submit"
+                        class="email-button">
+
+                        SUBSCRIBE
+
+                    </button>
+
+                </form>
+
+
+                <!-- TWO PLANETS -->
+
+                <div class="facts-planets">
+
+                    <div class="crater-planet"></div>
+
+                    <div class="crater-planet"></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+
+        <footer>
+
+            <div class="footer-links">
+
+                <a href="#home">
+                    HOME
+                </a>
+
+                <a href="#exoplanet">
+                    EXOPLANET
+                </a>
+
+                <a href="#exploration">
+                    EXPLORATION
+                </a>
+
+                <a href="#facts">
+                    FACTS
+                </a>
+
+            </div>
+
+
+            <div class="social-icons">
+
+                <span>◎</span>
+                <span>◉</span>
+                <span>◌</span>
+                <span>◍</span>
+
+            </div>
+
+
+            <p>
+                © 2026 AKASHGANGA. ALL RIGHTS RESERVED.
+            </p>
+
+        </footer>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
